@@ -7,19 +7,25 @@
  *           情况下，任何企业和个人，不能获取、阅读、安装、传播本软件涉及的任何受知
  *           识产权保护的内容。                            
  ***************************************************************************/
-package com.ruibing.home.service;
+package com.ruibing.home.impl;
 
-import org.quartz.TriggerKey;
+import com.ruibing.home.service.AsyncService;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
 /** @author Baijl
  * 2020/9/29 
- * 16:33 
- * @description
+ * 17:19 
+ * @description 异步调用测试impl
  */
-public interface QuartzService {
-    /**
-     * 测试定时任务框架（同步方法）
-     * @param key
-     */
-    void quartzTest(TriggerKey key);
+@Service
+public class AsyncServiceImpl implements AsyncService {
+    @Override
+    @Async
+    public void asyncTest() throws InterruptedException {
+        System.out.println("次线程"+Thread.currentThread().getName());
+        System.out.println("异步开始");
+        Thread.sleep(3000);
+        System.out.println("异步结束");
+    }
 }

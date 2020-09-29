@@ -11,8 +11,10 @@ package com.ruibing.home.controller;
 
 import com.ruibing.home.common.ReturnResult;
 import com.ruibing.home.domain.Student;
+import com.ruibing.home.service.AsyncService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,16 +33,19 @@ import java.util.stream.Collectors;
 @RequestMapping("student")
 @Api(tags = "测试学生模块")
 public class StudentController {
-
+    @Autowired
+    private AsyncService asyncService;
     @PostMapping(value = "post")
     @ApiOperation(value = "测试学生",notes = "进行学生验证框架的测试")
     @ReturnResult
-    public Object getStudent(@Valid @RequestBody Student student, BindingResult bindingResult) {
+    public Object getStudent(@Valid @RequestBody Student student, BindingResult bindingResult) throws InterruptedException {
         if(bindingResult.hasErrors()){
             return bindingResult.getFieldErrors().stream().map(x ->
                     x.getField() + " " + x.getDefaultMessage()
             ).collect(Collectors.toList());
         }
+        System.out.println("主线程"+Thread.currentThread().getName());
+        asyncService.asyncTest();
         return student;
     }
 }

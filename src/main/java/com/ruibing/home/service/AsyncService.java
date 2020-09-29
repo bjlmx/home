@@ -9,17 +9,14 @@
  ***************************************************************************/
 package com.ruibing.home.service;
 
-import org.quartz.TriggerKey;
-
 /** @author Baijl
  * 2020/9/29 
- * 16:33 
- * @description
+ * 17:18 
+ * @description 异步调用测试用service
  */
-public interface QuartzService {
+public interface AsyncService {
     /**
-     * 测试定时任务框架（同步方法）
-     * @param key
+     * 测试异步任务
      */
-    void quartzTest(TriggerKey key);
+    void asyncTest() throws InterruptedException;
 }

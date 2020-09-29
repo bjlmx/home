@@ -32,5 +32,6 @@ public class DemoJob extends QuartzJobBean {
         System.out.println(jobExecutionContext.getJobDetail().getJobDataMap().get("msg"));
         TriggerKey key = jobExecutionContext.getTrigger().getKey();
         quartzService.quartzTest(key);
+
     }
 }
