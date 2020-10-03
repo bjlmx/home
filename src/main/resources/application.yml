@@ -1,2 +1,6 @@
 server:
   port: 8050
+spring:
+  quartz:
+    auto-startup: false
+    time: '10,20,30,40,50 * * * * ? *'

@@ -12,11 +12,12 @@ package com.ruibing.home.domain;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.hibernate.validator.constraints.Range;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 /** @author Baijl
@@ -26,7 +27,8 @@ import java.util.List;
  */
 @Data
 @ApiModel(value = "学生测试实体")
-public class Student {
+public class Student implements Serializable {
+    private static final long serialVersionUID = -6889875458163370344L;
     @ApiModelProperty(value = "学生id")
     @NotNull(message = "学生id不能为空")
     private Integer id;
@@ -38,4 +40,11 @@ public class Student {
     @Size(min = 2,max = 5)
     @NotNull(message = "books不能为空")
     private List<Book> books;
+    @AssertFalse(message = "必须为false")
+    private Boolean flag;
+    @Range(max = 5,min = 2)
+    private BigDecimal number;
+    @Email(message = "不符合邮件格式")
+    @NotNull
+    private String email;
 }

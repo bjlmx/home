@@ -15,6 +15,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /** @author Baijl
  * 2020/9/29 
@@ -23,7 +24,8 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @ApiModel(value = "学生的课本实体类")
-public class Book {
+public class Book implements Serializable {
+    private static final long serialVersionUID = -7935715945282025479L;
     @NotNull(message = "课本id不能为空")
     @ApiModelProperty(value = "课本id")
     private Integer bookId;

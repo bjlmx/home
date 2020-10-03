@@ -11,6 +11,7 @@ package com.ruibing.home.config;
 
 import com.ruibing.home.job.DemoJob;
 import org.quartz.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,6 +22,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class QuartzConfig {
+    @Value("${spring.quartz.time}")
+    private String start;
     @Bean
     public JobDetail jobDetail() {
        return JobBuilder.newJob(DemoJob.class)
@@ -30,7 +33,7 @@ public class QuartzConfig {
     }
     @Bean
     public CronTrigger triggerJob() {
-        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0/1 * * * * ?");
+        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(start);
         return TriggerBuilder.newTrigger()
                 .forJob(jobDetail())
                 .withIdentity("11","22")
