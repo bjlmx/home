@@ -26,7 +26,7 @@ import springfox.documentation.spring.web.plugins.Docket;
  * @author Baijl
  * 2020/10/9
  * 16:35
- * @description swagger3.0整合springboot配置类
+ * @description swagger3.0整合springboot配置类 2020.10.09
  */
 @Configuration
 @EnableOpenApi
