@@ -29,8 +29,8 @@
             <artifactId>hutool-all</artifactId>
             <version>5.4.4</version>
         </dependency>
-        <!-- Swagger -->
-        <dependency>
+        <!-- Swagger 3.0（2020年最新版本） -->
+        <!--<dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>2.9.2</version>
@@ -39,6 +39,11 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
+        </dependency>-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
         </dependency>
         <!--Quartz-->
         <dependency>

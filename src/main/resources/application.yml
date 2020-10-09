@@ -4,3 +4,11 @@ spring:
   quartz:
     auto-startup: false
     time: '10,20,30,40,50 * * * * ? *'
+  application:
+    name: '我的swagger测试'
+swagger3:
+  enable: true
+  application-name: ${spring.application.name}
+  application-version: 'V1.1'
+  application-description: 'swagger3.1整合Demo'
+  try-host: http://localhost:${server.port}

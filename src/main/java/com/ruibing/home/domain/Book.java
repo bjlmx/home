@@ -11,7 +11,7 @@ package com.ruibing.home.domain;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,7 +22,11 @@ import java.io.Serializable;
  * 14:59 
  * @description
  */
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 @ApiModel(value = "学生的课本实体类")
 public class Book implements Serializable {
     private static final long serialVersionUID = -7935715945282025479L;

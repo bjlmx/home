@@ -41,10 +41,13 @@ public class Student implements Serializable {
     @NotNull(message = "books不能为空")
     private List<Book> books;
     @AssertFalse(message = "必须为false")
+    @ApiModelProperty(value = "标识")
     private Boolean flag;
     @Range(max = 5,min = 2)
+    @ApiModelProperty(value = "数量")
     private BigDecimal number;
     @Email(message = "不符合邮件格式")
     @NotNull
+    @ApiModelProperty(value = "邮箱内容")
     private String email;
 }
