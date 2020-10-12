@@ -9,17 +9,12 @@
  ***************************************************************************/
 package com.ruibing.home.service;
 
-import java.util.concurrent.Future;
-
-/** @author Baijl
- * 2020/9/29 
- * 17:18 
- * @description 异步调用测试用service
+/**
+ * @author Baijl
+ * 2020/10/12
+ * 14:08
+ * @description
  */
-public interface AsyncService {
-    /**
-     * 测试异步任务
-     * @return
-     */
-    Future<String> asyncTest() throws InterruptedException;
+public interface StudentService {
+    void index() throws InterruptedException;
 }

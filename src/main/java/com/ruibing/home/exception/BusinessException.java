@@ -7,19 +7,20 @@
  *           情况下，任何企业和个人，不能获取、阅读、安装、传播本软件涉及的任何受知
  *           识产权保护的内容。                            
  ***************************************************************************/
-package com.ruibing.home.service;
+package com.ruibing.home.exception;
 
-import java.util.concurrent.Future;
-
-/** @author Baijl
- * 2020/9/29 
- * 17:18 
- * @description 异步调用测试用service
+/**
+ * @author Baijl
+ * 2020/10/12
+ * 14:12
+ * @description
  */
-public interface AsyncService {
-    /**
-     * 测试异步任务
-     * @return
-     */
-    Future<String> asyncTest() throws InterruptedException;
+public class BusinessException extends RuntimeException{
+    public BusinessException(String message){
+        super(message);
+    }
+
+    public static BusinessException of(String msg){
+        return new BusinessException(msg);
+    }
 }

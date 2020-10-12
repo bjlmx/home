@@ -17,6 +17,7 @@ import com.ruibing.home.common.CommonResult;
 import com.ruibing.home.common.ReturnResult;
 import com.ruibing.home.domain.Student;
 import com.ruibing.home.service.AsyncService;
+import com.ruibing.home.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -42,6 +43,8 @@ import java.util.stream.Collectors;
 public class StudentController {
     @Autowired
     private AsyncService asyncService;
+    @Autowired
+    private StudentService studentService;
     @PostMapping(value = "post")
     @ApiOperation(value = "测试学生",notes = "进行学生验证框架的测试")
     @ReturnResult
@@ -54,7 +57,8 @@ public class StudentController {
             ).collect(Collectors.toList());
         }
         System.out.println("主线程"+Thread.currentThread().getName());
-        asyncService.asyncTest();
+
+        studentService.index();
         //language=JSON
         return student;
     }

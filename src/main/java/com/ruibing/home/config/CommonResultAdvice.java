@@ -12,17 +12,20 @@ package com.ruibing.home.config;
 import cn.hutool.core.annotation.AnnotationUtil;
 import com.ruibing.home.common.CommonResult;
 import com.ruibing.home.common.ReturnResult;
+import com.ruibing.home.exception.BusinessException;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /** @author Baijl
  * 2020/9/27 
  * 16:22 
- * @description
+ * @description 统一异常处理
  */
 @RestControllerAdvice
 public class CommonResultAdvice implements ResponseBodyAdvice {
@@ -54,5 +57,16 @@ public class CommonResultAdvice implements ResponseBodyAdvice {
             return body;
         }
         return new CommonResult<>(body);
+    }
+
+    /**
+     * 统一异常处理方法
+     * @param e
+     * @return
+     */
+    @ResponseBody
+    @ExceptionHandler(value = BusinessException.class)
+    public CommonResult<Object> getException(BusinessException e){
+        return new CommonResult<> (e.getMessage());
     }
 }

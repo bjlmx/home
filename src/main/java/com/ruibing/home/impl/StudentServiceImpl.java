@@ -9,27 +9,28 @@
  ***************************************************************************/
 package com.ruibing.home.impl;
 
+import com.ruibing.home.exception.BusinessException;
 import com.ruibing.home.service.AsyncService;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.AsyncResult;
+import com.ruibing.home.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.concurrent.Future;
-
-/** @author Baijl
- * 2020/9/29 
- * 17:19 
- * @description 异步调用测试impl
+/**
+ * @author Baijl
+ * 2020/10/12
+ * 14:09
+ * @description
  */
 @Service
-public class AsyncServiceImpl implements AsyncService {
+public class StudentServiceImpl implements StudentService {
+    @Autowired
+    private AsyncService asyncService;
+
+    @Transactional
     @Override
-    @Async
-    public Future<String> asyncTest() throws InterruptedException {
-        System.out.println("次线程"+Thread.currentThread().getName());
-        System.out.println("异步开始");
-        Thread.sleep(3000);
-        System.out.println("异步结束");
-        return new AsyncResult<>("异步返回值");
+    public void index() throws InterruptedException {
+        asyncService.asyncTest();
+       throw  BusinessException.of("抛出异常");
     }
 }
