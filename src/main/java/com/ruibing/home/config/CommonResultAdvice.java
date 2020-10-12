@@ -65,7 +65,7 @@ public class CommonResultAdvice implements ResponseBodyAdvice {
      * @return
      */
     @ResponseBody
-    @ExceptionHandler(value = BusinessException.class)
+    @ExceptionHandler(value = Exception.class)
     public CommonResult<Object> getException(BusinessException e){
         return new CommonResult<> (e.getMessage());
     }

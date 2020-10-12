@@ -29,6 +29,12 @@
             <artifactId>hutool-all</artifactId>
             <version>5.4.4</version>
         </dependency>
+        <!--thymeleaf-->
+        <!-- thymeleaf模板插件 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
         <!-- Swagger 3.0（2020年最新版本） -->
         <!--<dependency>
             <groupId>io.springfox</groupId>
