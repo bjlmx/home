@@ -1,0 +1,42 @@
+/**************************************************************************
+ * Copyright (c) 2006-2020 ZheJiang Electronic Port, Inc.
+ * All rights reserved.
+ *
+ * 项目名称：特殊监管区域信息管理系统
+ * 版权说明：本软件属浙江电子口岸有限公司所有，在未获得浙江电子口岸有限公司正式授权
+ *           情况下，任何企业和个人，不能获取、阅读、安装、传播本软件涉及的任何受知
+ *           识产权保护的内容。                            
+ ***************************************************************************/
+package com.ruibing.home.test.ticket;
+
+/**
+ * @author Baijl
+ * 2020/10/10
+ * 16:09
+ * @description
+ */
+public class SaleTicket2 extends Thread implements Sale{
+    private Ticket ticket;
+    public SaleTicket2(Ticket ticket) {
+        this.ticket = ticket;
+    }
+    @Override
+    public void run() {
+            saleTicket(ticket.getNumber());
+    }
+
+    @Override
+    public void saleTicket(Integer number) {
+        while (true){
+
+
+        if(number>0){
+            System.out.println("卖第"+number+"张票");
+            ticket.setNumber(number-1);
+        }else {
+            System.out.println("票已售完");
+            break;
+        }
+        }
+    }
+}

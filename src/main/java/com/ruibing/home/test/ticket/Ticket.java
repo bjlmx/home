@@ -7,29 +7,20 @@
  *           情况下，任何企业和个人，不能获取、阅读、安装、传播本软件涉及的任何受知
  *           识产权保护的内容。                            
  ***************************************************************************/
-package com.ruibing.home.test.line;
+package com.ruibing.home.test.ticket;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.Data;
 
-import java.util.concurrent.FutureTask;
-
-/** @author Baijl
- * 2020/9/21 
- * 14:40 
+/**
+ * @author Baijl
+ * 2020/10/10
+ * 16:19
  * @description
  */
-@Slf4j
-public class T extends Thread{
-    @Override
-    public void run() {
-        log.info("thread线程测试日志控制台打印");
-        System.out.println("thread线程创建测试");
-    }
-
-    public static void main(String[] args) {
-        new T().start();
-        new Thread(new R()).start();
-        FutureTask<String> task = new FutureTask<>(new C());
-        new Thread(task).start();
-    }
+@Data
+public class Ticket {
+    /**
+     * 卖票总数
+     */
+    private Integer number;
 }

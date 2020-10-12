@@ -7,20 +7,38 @@
  *           情况下，任何企业和个人，不能获取、阅读、安装、传播本软件涉及的任何受知
  *           识产权保护的内容。                            
  ***************************************************************************/
-package com.ruibing.home.test.line;
+package com.ruibing.home.test.ticket;
 
-import lombok.extern.slf4j.Slf4j;
-
-/** @author Baijl
- * 2020/9/21 
- * 14:54 
+/**
+ * @author Baijl
+ * 2020/10/10
+ * 16:09
  * @description
  */
-@Slf4j
-public class R implements Runnable{
+public class SaleTicket1 extends Thread implements Sale{
+    private Ticket ticket;
+    public SaleTicket1(Ticket ticket) {
+        this.ticket = ticket;
+    }
+    @Override
+    public void saleTicket(Integer number) {
+        while (true){
+
+
+        if(number>0){
+            System.out.println("卖第"+number+"张票");
+            ticket.setNumber(number-1);
+        }else {
+            System.out.println("票已售完");
+            break;
+        }
+        }
+    }
+
     @Override
     public void run() {
-        log.info("runnable测试");
-        System.out.println("runnable接口线程");
+
+            saleTicket(ticket.getNumber());
+
     }
 }

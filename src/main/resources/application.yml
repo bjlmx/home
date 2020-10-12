@@ -6,6 +6,7 @@ spring:
     time: '10,20,30,40,50 * * * * ? *'
   application:
     name: '我的swagger测试'
+    #springboot集成swagger3.0的自定义配置
 swagger3:
   enable: true
   application-name: ${spring.application.name}
