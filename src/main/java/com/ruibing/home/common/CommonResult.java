@@ -9,9 +9,7 @@
  ***************************************************************************/
 package com.ruibing.home.common;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /** @author Baijl
  * 2020/9/19 
@@ -19,14 +17,8 @@ import lombok.NoArgsConstructor;
  * @description
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class CommonResult<T> {
     private Integer status;
-
-    private String errorCode;
-
-    private String errorMessage;
 
     private String code;
 
@@ -42,29 +34,35 @@ public class CommonResult<T> {
     }
 
     public CommonResult(ResultEnum resultEnum) {
-        this.code=resultEnum.getCode();
-        this.msg=resultEnum.getMsg();
-        this.status=1;
+            this.code=resultEnum.getCode();
+            this.msg=resultEnum.getMsg();
+            this.status=resultEnum.getStatus();
+
     }
 
     public CommonResult(ResultEnum resultEnum,String msg) {
-        this.errorCode=resultEnum.getCode();
-        this.msg = resultEnum.getMsg();
-        this.errorMessage=msg;
-        this.status=-1;
+            this.code=resultEnum.getCode();
+            this.msg=msg;
+            this.status=resultEnum.getStatus();
+
     }
 
     public CommonResult(ResultEnum resultEnum,T data) {
         this.code=resultEnum.getCode();
         this.msg=resultEnum.getMsg();
-        this.status=1;
+        this.status=resultEnum.getStatus();
         this.data=data;
     }
 
-    public CommonResult(String msg) {
-        this.errorCode = ResultEnum.FAILED.getCode();
-        this.errorMessage=msg;
-        this.status=-1;
-    }
+//    public CommonResult(String msg) {
+//        this.errorCode = ResultEnum.FAILED.getCode();
+//        this.errorMessage=msg;
+//        this.status=-1;
+//    }
 
+    public CommonResult() {
+        this.code=ResultEnum.SUCCESS.getCode();
+        this.msg=ResultEnum.SUCCESS.getMsg();
+        this.status=ResultEnum.SUCCESS.getStatus();
+    }
 }

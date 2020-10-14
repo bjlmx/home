@@ -1,5 +1,6 @@
 server:
   port: 8050
+
 spring:
   quartz:
     auto-startup: false
@@ -9,6 +10,11 @@ spring:
     #springboot集成swagger3.0的自定义配置
   thymeleaf:
     prefix: classpath:/templates/
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    password: 123456
+    username: root
+    url: jdbc:mysql://192.168.159.128:3306/dockertest?characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false
 swagger3:
   enable: true
   application-name: ${spring.application.name}

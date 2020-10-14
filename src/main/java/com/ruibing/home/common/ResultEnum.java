@@ -15,11 +15,40 @@ package com.ruibing.home.common;
  * @description
  */
 public enum ResultEnum {
-    SUCCESS("200","处理成功"),
-    FAILED("201","处理失败");
+
+    SUCCESS("200","处理成功",1),
+    FAILED("201","处理失败",-1),
+
+    SAVE_SUCCESS("200","保存成功",1),
+    SAVE_FAILED("201","保存失败",-1),
+
+    DELETE_SUCCESS("203","删除成功",1),
+    DELETE_FAILED("204","删除失败",-1),
+
+    QUERY_SUCCESS("205","查询成功",1),
+    QUERY_FAILED("206","查询失败",-1),
+
+    UPDATE_SUCCESS("207","修改成功",1),
+    UPDATE_FAILED("208","修改失败",-1);
+
 
     private String code;
     private String msg;
+    private Integer status;
+
+    ResultEnum(String code, String msg, Integer status) {
+        this.code = code;
+        this.msg = msg;
+        this.status = status;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
     ResultEnum(String code, String msg) {
         this.code = code;

@@ -10,7 +10,9 @@
 package com.ruibing.home.config;
 
 import cn.hutool.core.annotation.AnnotationUtil;
+import cn.hutool.core.util.ObjectUtil;
 import com.ruibing.home.common.CommonResult;
+import com.ruibing.home.common.ResultEnum;
 import com.ruibing.home.common.ReturnResult;
 import com.ruibing.home.exception.BusinessException;
 import org.springframework.core.MethodParameter;
@@ -53,8 +55,16 @@ public class CommonResultAdvice implements ResponseBodyAdvice {
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
         if(body instanceof CommonResult){
-
             return body;
+        }
+        if(ObjectUtil.isNull(body)){
+            return new CommonResult<>();
+        }
+        if(body instanceof Boolean){
+            if(!(Boolean) body){
+                return new CommonResult<>(ResultEnum.FAILED);
+            }
+            return new CommonResult<>(ResultEnum.SUCCESS);
         }
         return new CommonResult<>(body);
     }
@@ -63,6 +73,7 @@ public class CommonResultAdvice implements ResponseBodyAdvice {
      * 统一异常处理方法
      * @param e
      * @return
+     * @description service层中的异常抛出可以在本方法中捕获并进行封装返回前端
      */
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
