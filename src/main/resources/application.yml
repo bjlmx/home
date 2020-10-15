@@ -15,9 +15,14 @@ spring:
     password: 123456
     username: root
     url: jdbc:mysql://192.168.159.128:3306/dockertest?characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false
+  redis:
+    host: 192.168.159.128
+    port: 6379
+
 swagger3:
   enable: true
   application-name: ${spring.application.name}
   application-version: 'V1.1'
   application-description: 'swagger3.1整合Demo'
   try-host: http://localhost:${server.port}
+# redis
