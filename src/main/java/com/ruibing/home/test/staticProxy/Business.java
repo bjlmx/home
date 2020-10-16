@@ -7,13 +7,16 @@
  *           情况下，任何企业和个人，不能获取、阅读、安装、传播本软件涉及的任何受知
  *           识产权保护的内容。                            
  ***************************************************************************/
-package com.ruibing.home.enumtest;
+package com.ruibing.home.test.staticProxy;
 
-/** @author Baijl
- * 2020/9/24 
- * 15:03 
+import java.math.BigDecimal;
+
+/**
+ * @author Baijl
+ * 2020/10/16
+ * 10:50
  * @description
  */
-public interface ReturnStatus {
-    void returnStatus();
+public interface Business {
+    BigDecimal saleDisk(Integer number,BigDecimal bigDecimal);
 }

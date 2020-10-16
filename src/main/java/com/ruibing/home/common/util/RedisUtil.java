@@ -77,4 +77,12 @@ public class RedisUtil {
     public void deleteAll(Collection<String> keys){
         redisTemplate.delete(keys);
     }
+
+    /***
+     * 分布式锁实现
+     * @return
+     */
+    public void lock(){
+//        redisTemplate.
+    }
 }
